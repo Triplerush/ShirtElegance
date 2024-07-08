@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_app"
+    android:gravity="center"
+    android:paddingHorizontal="10dp"
+    tools:context=".view_menu_app.MenuActivity">
+
+    <TextView
+        android:id="@+id/txtTitleMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/add_sale"
+        android:textColor="@color/blue_app"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txtCode"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/code"
+        android:textColor="@color/blue_app"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtInputCode"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitleMenu"
+
+        />
+
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/txtInputCode"
+        android:layout_width="match_parent"
+        android:maxLength="5"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/style_border_inputtext"
+        android:hint="@string/insert_fact"
+        android:inputType="number"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txtShirt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCode" />
+
+
+    <TextView
+        android:id="@+id/txtShirt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/shirt"
+        android:textColor="@color/blue_app"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/sprCodeshirt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtInputCode"
+
+        />
+
+    <Spinner
+        android:id="@+id/sprCodeshirt"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/blue_app"
+        android:scrollbarSize="25dp"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtUnit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtShirt"
+
+        />
+
+    <LinearLayout
+        android:id="@+id/txtUnit"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/rvShirts"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sprCodeshirt">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtAux"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="2.5"
+            android:background="@color/background_app"
+            android:gravity="center"
+            android:padding="1dp"
+            android:text="@string/total"
+            android:textColor="@color/blue_app"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="2.5"
+            android:background="@color/background_app"
+            android:gravity="center"
+            android:padding="1dp"
+            android:text="@string/dinero"
+            android:textColor="@color/blue_app"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="2.5"
+            android:background="@color/background_app"
+            android:gravity="center"
+            android:padding="1dp"
+            android:text="@string/borrar"
+            android:textColor="@color/blue_app"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvShirts"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:background="@drawable/style_border_sale"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtUnit"/>
+
+    <TextView
+        android:id="@+id/txtCodeCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/client"
+        android:textColor="@color/blue_app"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/rvShirts"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <Spinner
+        android:id="@+id/sprCliente"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/blue_app"
+        android:scrollbarSize="25dp"
+        app:cornerRadius="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtCodeCliente"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtAmount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="@string/amount"
+        android:textColor="@color/blue_app"
+        app:layout_constraintTop_toBottomOf="@+id/sprCliente"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/txtPrice"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="@string/price"
+        android:textColor="@color/blue_app"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/sprCliente"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/txtAmount" />
+
+    <TextView
+        android:id="@+id/inputAmount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/style_border_inputtext"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/txtPrice"
+        app:layout_constraintEnd_toStartOf="@+id/inputPrice"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/inputPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/style_border_inputtext"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAmount"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/inputAmount" />
+
+    <TextView
+        android:id="@+id/txtYear"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/year"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/blue_app"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/txtMonth"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputPrice"
+
+
+        />
+
+    <TextView
+        android:id="@+id/txtMonth"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="@string/month"
+        android:textColor="@color/blue_app"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/txtDay"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintTop_toBottomOf="@+id/inputPrice"
+        app:layout_constraintStart_toEndOf="@+id/txtYear" />
+
+    <TextView
+        android:id="@+id/txtDay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/day"
+        android:textColor="@color/blue_app"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/inputPrice"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/txtMonth" />
+
+    <TextView
+        android:id="@+id/txtInputYear"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/style_border_inputtext"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/txtYear"
+        app:layout_constraintEnd_toStartOf="@+id/txtInputMonth"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtInputMonth"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/style_border_inputtext"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/txtMonth"
+        app:layout_constraintEnd_toStartOf="@+id/txtInputDay"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/txtInputYear" />
+
+    <TextView
+        android:id="@+id/txtInputDay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/style_border_inputtext"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/txtDay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/txtInputMonth" />
+
+
+    <Button
+        android:id="@+id/btnCancelar"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:backgroundTint="@color/blue_app"
+        android:text="@string/back"
+        app:layout_constraintEnd_toStartOf="@+id/btnCalcular"
+        app:layout_constraintTop_toBottomOf="@+id/txtInputYear"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnCalcular"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/blue_app"
+        android:text="@string/price"
+        app:layout_constraintEnd_toStartOf="@+id/btnAceptar"
+        app:layout_constraintTop_toBottomOf="@+id/txtInputMonth"
+        app:layout_constraintStart_toEndOf="@+id/btnCancelar" />
+
+    <Button
+        android:id="@+id/btnAceptar"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/blue_app"
+        android:text="@string/acept"
+        app:layout_constraintTop_toBottomOf="@+id/txtInputDay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnCalcular" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

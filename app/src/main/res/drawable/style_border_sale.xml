@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="true">
+        <shape>
+            <solid android:color="@color/background_app" />
+            <stroke
+                android:width="2dp"
+                android:color="@color/blue_app" />
+            <padding
+                android:bottom="2dp"
+                android:left="2dp"
+                android:right="2dp"
+                android:top="2dp" />
+            <corners
+                android:radius="10dp"
+                />
+        </shape>
+    </item>
+</selector>

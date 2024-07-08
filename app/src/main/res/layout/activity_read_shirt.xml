@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_app"
+    android:gravity="center"
+    android:paddingHorizontal="15dp"
+    tools:context=".view_menu_app.MenuActivity">
+
+    <TextView
+        android:id="@+id/txtTitleMenu"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="@string/shirt"
+        android:textColor="@color/blue_app"
+        android:layout_marginTop="15dp"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/llContent"
+        />
+
+    <LinearLayout
+        android:id="@+id/llContent"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtPlayerName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitleMenu">
+
+
+        <ImageView
+            android:id="@+id/imgShirt"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            android:layout_weight="2.5"
+            android:layout_marginHorizontal="75dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="5dp"
+            >
+
+            <TextView
+                android:id="@+id/txtNameShirt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                tools:text="Hola"
+                android:maxLines="1"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/txtCodeShirt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                tools:text="Codigo: RMD001"
+                />
+
+            <TextView
+                android:id="@+id/txtAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:gravity="end"
+                tools:text="Stock: 50"
+            />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+    <TextView
+        android:id="@+id/txtPlayerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/player_name"
+        android:textColor="@color/blue_app"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llContent" />
+
+
+    <TextView
+        android:id="@+id/txtInputPlayer"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/style_border_inputtext"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:maxLines="1"
+        tools:text="Hola"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPlayerName" />
+
+
+    <TextView
+        android:id="@+id/txtTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/team"
+        android:textColor="@color/blue_app"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtInputPlayer" />
+
+
+    <TextView
+        android:id="@+id/txtInputTeam"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/style_border_inputtext"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        tools:text="HOla"
+        android:maxLines="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTeam" />
+
+    <TextView
+        android:id="@+id/txtTemporada"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="@string/temp"
+        android:textColor="@color/blue_app"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/txtDorsal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtInputTeam" />
+
+    <TextView
+        android:id="@+id/txtDorsal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="@string/dorsal"
+        android:textColor="@color/blue_app"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/txtTalla"
+        app:layout_constraintStart_toEndOf="@+id/txtTemporada"
+        app:layout_constraintTop_toBottomOf="@+id/txtInputTeam" />
+
+    <TextView
+        android:id="@+id/txtTalla"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="@string/size"
+        android:textColor="@color/blue_app"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtDorsal"
+        app:layout_constraintTop_toBottomOf="@+id/txtInputTeam" />
+
+    <TextView
+        android:id="@+id/txtInputTemp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/style_border_inputtext"
+        android:textSize="20sp"
+        tools:text="HOla"
+        android:padding="10dp"
+        android:maxLines="1"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/txtInputDorsal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTemporada"
+        app:layout_constraintBottom_toTopOf="@+id/btnVolver"
+        />
+
+    <TextView
+        android:id="@+id/txtInputDorsal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/style_border_inputtext"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="10dp"
+        android:textSize="20sp"
+        tools:text="HOla"
+        android:maxLines="1"
+        app:layout_constraintEnd_toStartOf="@+id/txtInputTalla"
+        app:layout_constraintStart_toEndOf="@+id/txtInputTemp"
+        app:layout_constraintTop_toBottomOf="@+id/txtDorsal"
+        app:layout_constraintBottom_toTopOf="@+id/btnVolver"
+        />
+
+    <TextView
+        android:id="@+id/txtInputTalla"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/style_border_inputtext"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="10dp"
+        android:textSize="20sp"
+        tools:text="HOla- asdfasdfadsf"
+        android:maxLines="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtInputDorsal"
+        app:layout_constraintTop_toBottomOf="@+id/txtTalla"
+        app:layout_constraintBottom_toTopOf="@+id/btnVolver"
+        />
+
+    <Button
+        android:id="@+id/btnVolver"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/blue_app"
+        android:text="@string/back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnEdit"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnEdit"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/blue_app"
+        android:text="@string/edit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnVolver" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

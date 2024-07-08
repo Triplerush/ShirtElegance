@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">Shirt Elegance</string>
+    <string name="subtitle_menu">"Inicio"</string>
+    <string name="add_shirt">Agregar</string>
+    <string name="edit_shirt">Editar Camiseta</string>
+    <string name="view_shirts">Listar</string>
+    <string name="delete_shirt">Eliminar Camiseta</string>
+    <string name="view_sales">Ver Ventas</string>
+    <string name="add_sale">Registrar</string>
+    <string name="exit">Salir</string>
+    <string name="code">Código</string>
+    <string name="shirt_name">Nombre de la Camiseta</string>
+    <string name="player_name">Jugador</string>
+    <string name="insert_fact">Agregue dato</string>
+    <string name="team">Equipo</string>
+    <string name="temp">Temporada</string>
+    <string name="dorsal">Dorsal</string>
+    <string name="size">Talla</string>
+    <string name="brand">Marca</string>
+    <string name="amount">Cantidad</string>
+    <string name="image">Imagen</string>
+    <string name="insert">Ingresar</string>
+    <string name="acept">Aceptar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="title_menu">"Shirt Elegance"</string>
+    <string name="shirts">"Camisetas"</string>
+    <string name="back">Volver</string>
+    <string name="add">Añadir</string>
+    <string name="search">"Buscar"</string>
+    <string name="delete">"Eliminar"</string>
+    <string name="pick">"Elige"</string>
+    <string name="view">Ver</string>
+    <string name="search_shirt">Buscar Camiseta</string>
+    <string name="shirt">Camiseta</string>
+    <string name="extra_data">Agregar informacion</string>
+    <string name="edit">Editar</string>
+    <string name="code_shirt">Código camiseta</string>
+    <string name="client">Cliente</string>
+    <string name="day">Día</string>
+    <string name="month">Mes</string>
+    <string name="year">Año</string>
+    <string name="price">Precio</string>
+    <string name="dinero">S/.</string>
+    <string name="borrar">Borrar</string>
+    <string name="description">Descripción</string>
+    <string name="total">Total</string>
+    <string name="date">Fecha</string>
+    <string name="country">País</string>
+    <string name="phone">Teléfono</string>
+    <string name="name">Nombre</string>
+    <string name="question">¿Seguro que quieres eliminar este elemento?</string>
+    <string name="sale">Ventas</string>
+
+
+</resources>

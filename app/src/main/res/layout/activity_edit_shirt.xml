@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_app"
+    android:gravity="center"
+    android:paddingHorizontal="10dp"
+    tools:context=".view_menu_app.MenuActivity">
+
+    <TextView
+        android:id="@+id/txtTitleMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/edit_shirt"
+        android:textColor="@color/blue_app"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/code"
+        android:textColor="@color/blue_app"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitleMenu" />
+
+
+    <TextView
+        android:id="@+id/txtInputCode"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/style_border_inputtext"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCode" />
+
+
+    <TextView
+        android:id="@+id/txtNameShirt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/shirt_name"
+        android:textColor="@color/blue_app"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtInputCode" />
+
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/txtInputName"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/style_border_inputtext"
+        android:hint="@string/insert_fact"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.425"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNameShirt" />
+
+    <TextView
+        android:id="@+id/txtNamePlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/player_name"
+        android:textColor="@color/blue_app"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtInputName" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/txtInputPlayer"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/style_border_inputtext"
+        android:hint="@string/insert_fact"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNamePlayer" />
+
+    <TextView
+        android:id="@+id/txtTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/team"
+        android:textColor="@color/blue_app"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtInputPlayer" />
+
+    <Spinner
+        android:id="@+id/sprTeam"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/blue_app"
+        android:scrollbarSize="25dp"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTeam" />
+
+    <TextView
+        android:id="@+id/txtTemporada"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="@string/temp"
+        android:textColor="@color/blue_app"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/txtDorsal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sprTeam" />
+
+    <TextView
+        android:id="@+id/txtDorsal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="@string/dorsal"
+        android:textColor="@color/blue_app"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/txtTalla"
+        app:layout_constraintStart_toEndOf="@+id/txtTemporada"
+        app:layout_constraintTop_toBottomOf="@+id/sprTeam" />
+
+    <TextView
+        android:id="@+id/txtTalla"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="@string/size"
+        android:textColor="@color/blue_app"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtDorsal"
+        app:layout_constraintTop_toBottomOf="@+id/sprTeam" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/txtInputTemp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/style_border_inputtext"
+        android:hint="@string/insert"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/txtInputDorsal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTemporada" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/txtInputDorsal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/style_border_inputtext"
+        android:hint="@string/insert"
+        android:inputType="number"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/sprTalla"
+        app:layout_constraintStart_toEndOf="@+id/txtInputTemp"
+        app:layout_constraintTop_toBottomOf="@+id/txtDorsal" />
+
+    <Spinner
+        android:id="@+id/sprTalla"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/blue_app"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtInputDorsal"
+        app:layout_constraintTop_toBottomOf="@+id/txtTalla" />
+
+    <TextView
+        android:id="@+id/txtMarca"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/brand"
+        android:textColor="@color/blue_app"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/txtCantidad"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtInputTemp" />
+
+    <TextView
+        android:id="@+id/txtCantidad"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/amount"
+        android:textColor="@color/blue_app"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@id/txtImagen"
+
+        app:layout_constraintStart_toEndOf="@+id/txtMarca"
+        app:layout_constraintTop_toBottomOf="@+id/txtInputDorsal" />
+
+    <TextView
+        android:id="@+id/txtImagen"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/image"
+        android:textColor="@color/blue_app"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtCantidad"
+        app:layout_constraintTop_toBottomOf="@+id/sprTalla" />
+
+    <Spinner
+        android:id="@+id/sprMarca"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/blue_app"
+        app:layout_constraintEnd_toStartOf="@+id/txtInputAmount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMarca" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/txtInputAmount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/style_border_inputtext"
+        android:hint="@string/insert"
+        android:inputType="number"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/btnImagen"
+        app:layout_constraintStart_toEndOf="@+id/sprMarca"
+        app:layout_constraintTop_toBottomOf="@+id/txtCantidad" />
+
+    <Button
+        android:id="@+id/btnImagen"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="@color/blue_app"
+        android:text="@string/pick"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtInputAmount"
+        app:layout_constraintTop_toBottomOf="@+id/txtImagen" />
+
+    <Button
+        android:id="@+id/btnCancelar"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="50dp"
+        android:backgroundTint="@color/blue_app"
+        android:text="@string/cancel"
+        app:layout_constraintEnd_toStartOf="@+id/btnAceptar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtInputAmount" />
+
+    <Button
+        android:id="@+id/btnAceptar"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/blue_app"
+        android:text="@string/acept"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnCancelar"
+        app:layout_constraintTop_toBottomOf="@+id/txtInputAmount" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

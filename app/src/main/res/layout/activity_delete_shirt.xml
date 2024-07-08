@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_app"
+    android:gravity="center"
+    android:paddingHorizontal="15dp"
+    tools:context=".view_menu_app.MenuActivity">
+
+    <TextView
+        android:id="@+id/txtTitleMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/delete_shirt"
+        android:textColor="@color/blue_app"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/txtInputSearch"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/style_border_inputtext"
+        android:hint="@string/insert_fact"
+        android:inputType="text"
+        android:layout_marginEnd="5dp"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_weight="10"
+        app:layout_constraintEnd_toStartOf="@+id/imgSearch"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitleMenu" />
+
+    <ImageView
+        android:id="@+id/imgSearch"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/baseline_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitleMenu"
+        app:layout_constraintStart_toEndOf="@+id/txtInputSearch"
+        app:tint="@color/white"
+        app:layout_constraintHorizontal_weight="1"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvShirtsActions"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtInputSearch" />
+
+
+    <Button
+        android:id="@+id/btnVolver"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/blue_app"
+        android:text="@string/back"
+        app:layout_constraintEnd_toStartOf="@+id/btnDelete"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvShirtsActions" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/blue_app"
+        android:text="@string/delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnVolver"
+        app:layout_constraintTop_toBottomOf="@+id/rvShirtsActions" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
