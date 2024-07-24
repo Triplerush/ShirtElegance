@@ -3,12 +3,14 @@ package com.android.inventarioapp.view_search_shirts
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -29,10 +31,10 @@ class SearchShirtActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySearchShirtBinding
 
-
-    lateinit var adapterShirtAction : rvSearchAdapter
+    lateinit var adapterShirtAction: rvSearchAdapter
     lateinit var base: SQLManager
 
+    private val handler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,31 +56,28 @@ class SearchShirtActivity : AppCompatActivity() {
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             val message = "Debes conceder el permiso para ver las imagenes de las camisetas"
-            Toast.makeText(this@SearchShirtActivity,message, Toast.LENGTH_LONG).show()
+            Toast.makeText(this@SearchShirtActivity, message, Toast.LENGTH_LONG).show()
         }
     }
 
-    private fun initComponents(){
+    private fun initComponents() {
         base = SQLManager(this)
 
         binding = ActivitySearchShirtBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         txtInputSearch = findViewById(R.id.txtInputSearch)
-        txtInputSearch.addTextChangedListener(object : TextWatcher{
+        txtInputSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
             override fun afterTextChanged(s: Editable?) {
-                filtrar(s.toString())
+                s?.let { searchInBackground(it.toString()) }
             }
-
         })
 
         rvSearch = findViewById(R.id.rvShirtsActions)
         btnAdd = findViewById(R.id.btnInicio)
-        lista = ArrayList(base.getCamisetas(this).asList().filter { camiseta -> camiseta.EstCam == 1 })
-        adapterShirtAction = rvSearchAdapter(lista)
+        adapterShirtAction = rvSearchAdapter(ArrayList())
         btnVolver = findViewById(R.id.btnVolver)
 
         rvSearch.apply {
@@ -86,7 +85,10 @@ class SearchShirtActivity : AppCompatActivity() {
             adapter = adapterShirtAction
         }
 
+        // Cargar los datos en segundo plano
+        loadDataInBackground()
     }
+
     private fun initListeners() {
         btnVolver.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
@@ -100,15 +102,29 @@ class SearchShirtActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun filtrar(texto: String){
-        val listaFiltrada = ArrayList<Shirt>()
+    private fun loadDataInBackground() {
+        Thread {
+            // Cargar los datos en segundo plano
+            lista = ArrayList(base.getCamisetas(this).asList().filter { camiseta -> camiseta.EstCam == 1 })
 
-        lista.forEach {
-            if(it.CamNom.lowercase().contains(texto.lowercase())){
-                listaFiltrada.add(it)
+            // Actualizar la UI en el hilo principal
+            handler.post {
+                adapterShirtAction.changeResult(lista)
             }
-        }
+        }.start()
+    }
 
-        adapterShirtAction.changeResult(listaFiltrada)
+    private fun searchInBackground(query: String) {
+        Thread {
+            // Filtrar la lista en segundo plano
+            val listaFiltrada = lista.filter {
+                it.CamNom.lowercase().contains(query.lowercase())
+            }
+
+            // Actualizar la UI en el hilo principal
+            handler.post {
+                adapterShirtAction.changeResult(ArrayList(listaFiltrada))
+            }
+        }.start()
     }
 }

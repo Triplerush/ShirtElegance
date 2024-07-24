@@ -3,6 +3,8 @@ package com.android.inventarioapp.view_add_sales
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
@@ -19,8 +21,8 @@ import com.android.inventarioapp.class_tables.SalidaCabecera
 import com.android.inventarioapp.class_tables.SalidaDetalle
 import com.android.inventarioapp.class_tables.Shirt
 import com.android.inventarioapp.view_menu_app.MenuActivity
-import java.util.Calendar
 import com.google.android.material.textfield.TextInputEditText
+import java.util.Calendar
 
 class AddSalesActivity : AppCompatActivity() {
     private lateinit var rvShirts: RecyclerView
@@ -44,13 +46,15 @@ class AddSalesActivity : AppCompatActivity() {
     var ListaShirts = arrayOf("Camisetas")
     var ListaClientes = arrayOf("Cliente")
 
+    private val handler = Handler(Looper.getMainLooper())
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_sales)
 
         initComponents()
         initListeners()
-
+        loadShirtsAndClientsInBackground()
     }
 
     private fun initComponents() {
@@ -69,23 +73,8 @@ class AddSalesActivity : AppCompatActivity() {
         inputAmount = findViewById(R.id.inputAmount)
         obtenerFechaActual()
 
-        for (shirt in base.getCamisetas(this).asList()
-            .filter { camiseta -> camiseta.EstCam == 1 }) {
-            ListaShirts = ListaShirts.plus("${shirt.CamCod} - ${shirt.CamNom}")
-        }
-        val adaptadorShirt = ArrayAdapter<String>(this, R.layout.spinner_items, ListaShirts)
-        sprCodeshirt.adapter = adaptadorShirt
-
-        for (cliente in base.getClientes(this)) {
-            ListaClientes = ListaClientes.plus("${cliente.CliCod} - ${cliente.CliNom}")
-        }
-        val adaptadorClientes = ArrayAdapter<String>(this, R.layout.spinner_items, ListaClientes)
-        sprCliente.adapter = adaptadorClientes
         lista = ArrayList()
-        adapterShirtAction = rvAddSaleAdapter(
-            lista,
-            { cod -> filtrar(cod) }
-        )
+        adapterShirtAction = rvAddSaleAdapter(lista) { cod -> filtrar(cod) }
         btnCancelar = findViewById(R.id.btnCancelar)
         rvShirts.apply {
             layoutManager = LinearLayoutManager(this@AddSalesActivity)
@@ -124,6 +113,30 @@ class AddSalesActivity : AppCompatActivity() {
         btnAceptar.setOnClickListener {
             addSaleCab()
         }
+    }
+
+    private fun loadShirtsAndClientsInBackground() {
+        Thread {
+            // Cargar camisetas en segundo plano
+            val shirtsList = base.getCamisetas(this).asList()
+                .filter { camiseta -> camiseta.EstCam == 1 }
+                .map { "${it.CamCod} - ${it.CamNom}" }
+            ListaShirts = arrayOf("Camisetas") + shirtsList
+
+            // Cargar clientes en segundo plano
+            val clientsList = base.getClientes(this)
+                .map { "${it.CliCod} - ${it.CliNom}" }
+            ListaClientes = arrayOf("Cliente") + clientsList
+
+            // Actualizar la UI en el hilo principal
+            handler.post {
+                val adaptadorShirt = ArrayAdapter(this@AddSalesActivity, R.layout.spinner_items, ListaShirts)
+                sprCodeshirt.adapter = adaptadorShirt
+
+                val adaptadorClientes = ArrayAdapter(this@AddSalesActivity, R.layout.spinner_items, ListaClientes)
+                sprCliente.adapter = adaptadorClientes
+            }
+        }.start()
     }
 
     private fun addSaleCab() {
@@ -228,15 +241,13 @@ class AddSalesActivity : AppCompatActivity() {
         }
     }
 
-
-
     private fun calculatePrice() {
         if (adapterShirtAction.itemCount == 0) {
             inputPrice.text = ""
             return
         }
 
-        var price: Double = 0.0;
+        var price = 0.0
         for (i in 0 until adapterShirtAction.itemCount) {
             val shirtViewHolder = rvShirts.findViewHolderForAdapterPosition(i) as ShirtViewHolder?
             val inputPriceValue = shirtViewHolder?.getInputPriceValue()
@@ -251,7 +262,7 @@ class AddSalesActivity : AppCompatActivity() {
             }
             price += inputPriceValue.toDouble() * inputAmountValue!!.toDouble()
         }
-        inputPrice.text = price.toString();
+        inputPrice.text = price.toString()
     }
 
     private fun calculateAmount() {
@@ -260,7 +271,7 @@ class AddSalesActivity : AppCompatActivity() {
             return
         }
 
-        var amount = 0;
+        var amount = 0
         for (i in 0 until adapterShirtAction.itemCount) {
             val shirtViewHolder = rvShirts.findViewHolderForAdapterPosition(i) as ShirtViewHolder?
             val inputAmountValue = shirtViewHolder?.getInputAmountValue()
@@ -272,9 +283,9 @@ class AddSalesActivity : AppCompatActivity() {
                 ).show()
                 return
             }
-            amount += inputAmountValue?.toInt() ?: 0;
+            amount += inputAmountValue.toInt()
         }
-        inputAmount.text = amount.toString();
+        inputAmount.text = amount.toString()
     }
 
     fun obtenerFechaActual() {
